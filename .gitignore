@@ -1,0 +1,6 @@
+.idea
+platforms/
+plugins/
+*.iml
+saved.lst
+seen.lst
