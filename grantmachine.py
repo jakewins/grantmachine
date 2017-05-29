@@ -99,7 +99,7 @@ def main():
 
         print("==============================================")
         print("Title: {}".format(hit['title']))
-        if yes_or_no("Explore (Yn)?") is False:
+        if yes_or_no("Explore (Yn)? ") is False:
             mark_seen(hit['id'])
             continue
 
@@ -118,7 +118,7 @@ def main():
         print("    " + "\n    ".join(textwrap.wrap(synopsis['synopsisDesc'], 100)))
         print()
 
-        if yes_or_no("Save (Yn)?") is False:
+        if yes_or_no("Save (Yn)? ") is False:
             mark_seen(hit['id'])
             continue
 
@@ -126,4 +126,7 @@ def main():
         mark_seen(hit['id'])
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except EOFError:
+        print()

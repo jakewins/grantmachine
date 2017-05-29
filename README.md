@@ -2,6 +2,8 @@
 
 A command-line tool to rapidly sort through US Government grants.
 
+![Usage example][example.gif]
+
 ## Usage
 
 First, update the CATEGORIES variable in the script to tell it which
