@@ -2,7 +2,8 @@
 
 A command-line tool to rapidly sort through US Government grants.
 
-![Usage example][example.gif]
+![Usage example](https://github.com/jakewins/grantmachine/blob/master/example.gif "Usage example")
+
 
 ## Usage
 
