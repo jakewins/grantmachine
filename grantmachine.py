@@ -73,18 +73,18 @@ def load_opportunity_page(start_at=0):
     }
     response = requests.post("https://www.grants.gov/grantsws/rest/opportunities/search/", data=json.dumps(parameters))
     results = response.json()
-    return results['oppHits']
+    return results['oppHits'], results['hitCount']
 
 
 def load_opportunities():
     start_at=0
     has_more = True
     while has_more:
-        page = load_opportunity_page(start_at)
+        page, total = load_opportunity_page(start_at)
         has_more = len(page) == 25
         for hit in page:
             start_at += 1
-            yield hit
+            yield hit, (start_at, total)
 
 
 def grant_url(grant_id):
@@ -93,11 +93,11 @@ def grant_url(grant_id):
 
 def main():
     seen = set(load_seen())
-    for hit in load_opportunities():
+    for hit, progress in load_opportunities():
         if hit['id'] in seen:
             continue
 
-        print("==============================================")
+        print("=================({}/{})=====================".format(progress[0], progress[1]))
         print("Title: {}".format(hit['title']))
         if yes_or_no("Explore (Yn)? ") is False:
             mark_seen(hit['id'])
