@@ -18,4 +18,4 @@ through the same grants.
 
 ## License
 
-MIT
+MIT, see LICENSE
